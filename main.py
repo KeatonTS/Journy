@@ -232,8 +232,8 @@ def display_note(root, item):
     note_box.insert(
         END,
         f'\n\nToday, I {item.today}\n\n'
-        f'Tomorrow, I {item.tomorrow}\n\n'
-        f'Other than that, {item.general}\n\n'
+        f'Tomorrow, I {item.tomorrow}\n\n\n'
+        f'Other than that, {item.general}'
 
     )
     note_box.config(state='disabled')
