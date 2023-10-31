@@ -132,8 +132,9 @@ def newNote(editing_note=False, item=None):
     note_title_entry = Entry(root, font=STARTER_LABEL_FONT, name='title_entry', width=24, borderwidth=0)
     note_title_entry.place(x=340, y=34)
 
-    # Auto add default titles for when creating a new note, if there are no notes in db, default title to Journyl #1
-    note_title_entry.insert('end', f'Journyl #{len(get_all_notes()) + 1 if get_all_notes() else 1}')
+    if not editing_note:
+        # Auto add default titles for when creating a new note, if there are no notes in db, default title to Journyl #1
+        note_title_entry.insert('end', f'Journyl #{len(get_all_notes()) + 1 if get_all_notes() else 1}')
     note_title_entry.focus()
 
     today_i_label = Label(root, text="Today, I...", name='today_label', font=STARTER_LABEL_FONT)
