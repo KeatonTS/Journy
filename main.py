@@ -18,9 +18,9 @@ style = ThemedStyle(root)
 style.set_theme("scidblue")
 
 # Constant fonts
-TITLE_LABEL_FONT = ("calibri", 18, "bold")
-STARTER_LABEL_FONT = ("calibri", 12, "bold")
-STATIC_LABEL_FONT = ("calibri", 18, "bold")
+TITLE_LABEL_FONT = ("Arial", 18, "bold")
+STARTER_LABEL_FONT = ("Arial", 12, "bold")
+STATIC_LABEL_FONT = ("Arial", 18, "bold")
 BUTTON_TEXT_FONT_BOLD = ('calibri', 14, 'bold')
 BUTTON_TEXT_FONT = ('calibri', 12)
 TEXT_BOX_FONT = ('calibri', 12)
@@ -126,11 +126,15 @@ def newNote(editing_note=False, item=None):
     clear_widgets("new_note_button", 'note_bttn_2', 'current_title', 'note_date', 'current_note',
                   'edit_bttn', 'del_bttn', 'back_bttn')
 
-    note_title = Label(root, text="New Note Title:", name='title_label', font=TITLE_LABEL_FONT)
-    note_title.place(x=340, y=25)
+    # note_title = Label(root, text="Journy Title:", name='title_label', font=TITLE_LABEL_FONT)
+    # note_title.place(x=340, y=25)
 
     note_title_entry = Entry(root, font=STARTER_LABEL_FONT, name='title_entry', width=24, borderwidth=0)
-    note_title_entry.place(x=535, y=33)
+    note_title_entry.place(x=340, y=34)
+
+    # Auto add default titles for when creating a new note, if there are no notes in db, default title to Journyl #1
+    note_title_entry.insert('end', f'Journyl #{len(get_all_notes()) + 1 if get_all_notes() else 1}')
+    note_title_entry.focus()
 
     today_i_label = Label(root, text="Today, I...", name='today_label', font=STARTER_LABEL_FONT)
     today_i_label.place(x=340, y=80)
@@ -265,7 +269,7 @@ def main(root):
     root.geometry("800x500")
 
     # Your notes string
-    title = tk.Label(root, text="Your Notes", font=STATIC_LABEL_FONT)
+    title = tk.Label(root, text="Your Journy", font=STATIC_LABEL_FONT)
     title.pack(padx=0, pady=50)
     title.place(x=50, y=25)
 
