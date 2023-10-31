@@ -174,7 +174,7 @@ def newNote(editing_note=False, item=None):
                 refresh()
                 return
             else:
-                messagebox.showwarning(message='Title must be less than 20 characters.', title='Error')
+                messagebox.showwarning(message='Title must be less than 20 characters.', title='Notice')
 
         else:
             if not len(title_answer) > 20:
@@ -185,7 +185,7 @@ def newNote(editing_note=False, item=None):
                 refresh()
                 return
 
-            messagebox.showwarning(message='Title must be less than 20 characters.', title='Error')
+            messagebox.showwarning(message='Title must be less than 20 characters.', title='Notice')
 
     def cancel():
         clear_widgets('title_label', 'title_entry', 'today_label', 'today_entry', 'tmrrw_label', 'tmrrw_entry',
