@@ -136,7 +136,9 @@ def newNote(editing_note=False, item=None):
         # Auto add default titles for when creating a new note, if there are no notes in db, default title to Journyl #1
         note_title_entry.insert('end', f'Journyl #{len(get_all_notes()) + 1 if get_all_notes() else 1}')
     note_title_entry.focus()
-
+    # Selects default title text for increased UX
+    note_title_entry.select_range(0, len(note_title_entry.get()))
+    
     today_i_label = Label(root, text="Today, I...", name='today_label', font=STARTER_LABEL_FONT)
     today_i_label.place(x=340, y=80)
     today_input = Text(root, name='today_entry', height=1.5, width=50, font=TEXT_BOX_FONT, wrap='word', borderwidth=0)
